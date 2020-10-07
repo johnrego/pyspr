@@ -1,4 +1,6 @@
+import math as m
 import numpy as np
+from grafico import grafico
 from kretschmann import kretschmann
 
 print ('Simulador')
@@ -11,6 +13,7 @@ nCam = int(input('Informe o numero de camadas: '))-1
 luz = float(input('Informe o comprimento de luz incidente (nm): '))*pow(10, -9)
 indPris = float(input('Informe o indice de refracao do prisma: '))
 camadas = []
+camadas.append([indPris, pow(10, -4)])
 for a in range (nCam):
   print ('Informe o indice de refração da camada %d' % (a+2))
   real = float(input('Parte real: '))
@@ -18,6 +21,11 @@ for a in range (nCam):
   esp = float(input('Informe a espessura (nm): '))*pow(10, -9)
   camadas.append([complex(real, imag), esp])
 
+f = open('out.txt', 'w')
 for ang in np.arange(0, 1.5707, 0.001):
-  teste = kretschmann(indPris, luz, camadas)
-  print (teste.getMtotal(ang))
+  a = kretschmann(luz, camadas, ang)
+  val = a.refle()
+  print (val)
+  f.write('%f,%f\n' % ((ang*180)/m.pi, val))
+f.close()
+a = grafico('out.txt')
