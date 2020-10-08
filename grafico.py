@@ -12,5 +12,6 @@ class grafico:
       a = a.split(',')
       ang.append(float(a[0]))
       val.append(float(a[1]))
+      # print ('%s, %s' % (a[0], a[1]))
     plt.plot(ang, val)
     plt.show()

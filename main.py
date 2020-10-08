@@ -22,10 +22,10 @@ for a in range (nCam):
   camadas.append([complex(real, imag), esp])
 
 f = open('out.txt', 'w')
-for ang in np.arange(0, 1.5707, 0.001):
+for ang in np.arange(0, 1.572, 0.001):
   a = kretschmann(luz, camadas, ang)
   val = a.refle()
-  print (val)
-  f.write('%f,%f\n' % ((ang*180)/m.pi, val))
+  # print (val)
+  f.write('%f,%f\n' % (ang*(180/m.pi), val))
 f.close()
 a = grafico('out.txt')

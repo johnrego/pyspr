@@ -8,12 +8,7 @@ class kretschmann:
     self.ang = []
     self.ang.append(ang)
     for a in range(1, len(self.camadas)):
-      try:
-        theta = m.sqrt(1-abs(pow(self.camadas[a-1][0]/self.camadas[a][0], 2)*pow(m.sin(self.ang[0]), 2)))
-      except ValueError:
-        # theta = m.sqrt(abs(pow(self.camadas[a-1][0]/self.camadas[a][0], 2)*pow(m.sin(self.ang[0]), 2))-1)
-        print (abs(pow(self.camadas[a-1][0]/self.camadas[a][0], 2)*pow(m.sin(self.ang[0]), 2)))
-        exit ()
+      theta = m.sqrt(1-abs(pow(self.camadas[0][0]/self.camadas[a][0], 2)*pow(m.sin(self.ang[a-1]), 2)))
       self.ang.append(theta)
   
   def getBj (self, nCam):
